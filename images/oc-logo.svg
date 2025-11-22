@@ -1,29 +1,83 @@
-<svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
-  <!-- Background -->
-  <rect width="300" height="300" fill="transparent"/>
+<svg viewBox="0 0 400 520" xmlns="http://www.w3.org/2000/svg">
+  <!-- Define gradients -->
+  <defs>
+    <radialGradient id="orangeGradient" cx="35%" cy="35%">
+      <stop offset="0%" style="stop-color:#FFA500;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FF8C00;stop-opacity:1" />
+    </radialGradient>
+    <linearGradient id="lemonGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FFC700;stop-opacity:1" />
+    </linearGradient>
+  </defs>
 
-  <!-- Orange County Text -->
-  <text x="150" y="80" font-family="Arial, sans-serif" font-size="42" font-weight="bold" fill="#0088B8" text-anchor="middle">ORANGE</text>
+  <!-- Orbital rings -->
+  <g id="orbits">
+    <!-- Orange ring (top-right) -->
+    <path d="M 200 80 Q 280 120 300 180" stroke="#FF6B35" stroke-width="14" fill="none" stroke-linecap="round"/>
 
-  <!-- Orange Circle -->
-  <circle cx="150" cy="160" r="50" fill="#FF8C42"/>
+    <!-- Orange ring (bottom-left) -->
+    <path d="M 200 300 Q 120 270 100 200" stroke="#FF6B35" stroke-width="14" fill="none" stroke-linecap="round"/>
 
-  <!-- Orange highlight -->
-  <ellipse cx="135" cy="145" rx="20" ry="15" fill="#FFA55C" opacity="0.6"/>
+    <!-- Teal ring (left) -->
+    <path d="M 100 200 Q 140 130 200 100" stroke="#17A697" stroke-width="14" fill="none" stroke-linecap="round"/>
 
-  <!-- Leaf 1 -->
-  <ellipse cx="135" cy="115" rx="15" ry="25" fill="#7FB800" transform="rotate(-30 135 115)"/>
+    <!-- Teal ring (right) -->
+    <path d="M 300 200 Q 260 280 200 300" stroke="#17A697" stroke-width="14" fill="none" stroke-linecap="round"/>
+  </g>
 
-  <!-- Leaf 2 -->
-  <ellipse cx="165" cy="115" rx="15" ry="25" fill="#7FB800" transform="rotate(30 165 115)"/>
+  <!-- Main orange fruit -->
+  <circle cx="200" cy="160" r="75" fill="url(#orangeGradient)" stroke="#FF6B35" stroke-width="1"/>
 
-  <!-- Leaf 3 (smaller) -->
-  <ellipse cx="150" cy="110" rx="12" ry="20" fill="#8FD400" transform="rotate(0 150 110)"/>
+  <!-- Orange texture/dots -->
+  <g opacity="0.25">
+    <circle cx="185" cy="140" r="3" fill="#FFFFFF"/>
+    <circle cx="215" cy="145" r="2.5" fill="#FFFFFF"/>
+    <circle cx="195" cy="170" r="2" fill="#FFFFFF"/>
+    <circle cx="220" cy="175" r="2" fill="#FFFFFF"/>
+    <circle cx="175" cy="185" r="2.5" fill="#FFFFFF"/>
+    <circle cx="210" cy="155" r="1.5" fill="#FFFFFF"/>
+  </g>
 
-  <!-- County Text -->
-  <text x="150" y="250" font-family="Arial, sans-serif" font-size="42" font-weight="bold" fill="#0088B8" text-anchor="middle">COUNTY</text>
+  <!-- Star on orange -->
+  <path d="M 200 125 L 205 140 L 220 140 L 208 150 L 213 165 L 200 155 L 187 165 L 192 150 L 180 140 L 195 140 Z" fill="#FFFFFF" opacity="0.95"/>
 
-  <!-- Florida Text with underline -->
-  <text x="150" y="280" font-family="Arial, sans-serif" font-size="24" fill="#0088B8" text-anchor="middle">FLORIDA</text>
-  <line x1="90" y1="285" x2="210" y2="285" stroke="#0088B8" stroke-width="3"/>
+  <!-- Lemon slice (bottom right) -->
+  <circle cx="275" cy="255" r="55" fill="url(#lemonGradient)" stroke="#E6B800" stroke-width="2"/>
+
+  <!-- Lemon segments -->
+  <g stroke="#E6B800" stroke-width="2.5" fill="none" opacity="0.7">
+    <line x1="275" y1="200" x2="275" y2="310"/>
+    <line x1="220" y1="255" x2="330" y2="255"/>
+    <line x1="235" y1="210" x2="315" y2="300"/>
+    <line x1="315" y1="210" x2="235" y2="300"/>
+    <circle cx="275" cy="255" r="40" stroke="#E6B800" stroke-width="1.5" fill="none" opacity="0.6"/>
+  </g>
+
+  <!-- Lemon stars -->
+  <path d="M 275 220 L 277 230 L 287 230 L 278 237 L 280 247 L 275 240 L 270 247 L 272 237 L 263 230 L 273 230 Z" fill="#FFFFFF" opacity="0.8"/>
+
+  <!-- Green leaves -->
+  <g id="leaves" fill="#17A697">
+    <!-- Left leaf -->
+    <ellipse cx="155" cy="100" rx="20" ry="32" fill="#17A697" transform="rotate(-40 155 100)"/>
+    <path d="M 155 80 Q 162 95 155 120" stroke="#0D5F57" stroke-width="2" fill="none" opacity="0.6"/>
+
+    <!-- Right leaf -->
+    <ellipse cx="245" cy="100" rx="20" ry="32" fill="#17A697" transform="rotate(40 245 100)"/>
+    <path d="M 245 80 Q 238 95 245 120" stroke="#0D5F57" stroke-width="2" fill="none" opacity="0.6"/>
+  </g>
+
+  <!-- Text: ORANGE COUNTY -->
+  <text x="200" y="400" font-family="Arial, sans-serif" font-size="56" font-weight="bold" text-anchor="middle" fill="#003D4D" letter-spacing="2">
+    ORANGE COUNTY
+  </text>
+
+  <!-- Decorative line -->
+  <line x1="60" y1="425" x2="340" y2="425" stroke="#17A697" stroke-width="4" stroke-linecap="round"/>
+
+  <!-- Text: FLORIDA -->
+  <text x="200" y="480" font-family="Arial, sans-serif" font-size="44" font-weight="600" text-anchor="middle" fill="#17A697" letter-spacing="6">
+    FLORIDA
+  </text>
 </svg>
