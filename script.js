@@ -187,7 +187,7 @@ function getBotResponse(message) {
     // Check for greetings
     if (lowerMessage.match(/\b(hi|hello|hey|good morning|good afternoon)\b/)) {
         return {
-            text: "Hello! Welcome to Orange County's virtual assistant. I can help you with property taxes, permits, public records, parks, and more. How can I assist you today?",
+            text: "Hello! I'm Rai, your Orange County virtual assistant. I can help you with property taxes, permits, public records, parks, and more. How can I assist you today?",
             links: []
         };
     }

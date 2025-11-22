@@ -1,29 +1,34 @@
-<svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
-  <!-- Background -->
-  <rect width="300" height="300" fill="transparent"/>
+<svg width="400" height="400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <!-- Orange County Florida Logo -->
 
-  <!-- Orange County Text -->
-  <text x="150" y="80" font-family="Arial, sans-serif" font-size="42" font-weight="bold" fill="#0088B8" text-anchor="middle">ORANGE</text>
+  <!-- "ORANGE" Text -->
+  <text x="200" y="90" font-family="'Arial', 'Helvetica', sans-serif" font-size="58" font-weight="bold" fill="#0088B8" text-anchor="middle" letter-spacing="2">ORANGE</text>
 
-  <!-- Orange Circle -->
-  <circle cx="150" cy="160" r="50" fill="#FF8C42"/>
+  <!-- Orange Fruit -->
+  <circle cx="200" cy="200" r="65" fill="#FF8C42"/>
 
-  <!-- Orange highlight -->
-  <ellipse cx="135" cy="145" rx="20" ry="15" fill="#FFA55C" opacity="0.6"/>
+  <!-- Orange highlight/shine -->
+  <ellipse cx="180" cy="180" rx="25" ry="20" fill="#FFA55C" opacity="0.7"/>
 
-  <!-- Leaf 1 -->
-  <ellipse cx="135" cy="115" rx="15" ry="25" fill="#7FB800" transform="rotate(-30 135 115)"/>
+  <!-- Green Leaves -->
+  <!-- Left leaf -->
+  <ellipse cx="175" cy="145" rx="18" ry="32" fill="#7CB342" transform="rotate(-35 175 145)"/>
 
-  <!-- Leaf 2 -->
-  <ellipse cx="165" cy="115" rx="15" ry="25" fill="#7FB800" transform="rotate(30 165 115)"/>
+  <!-- Right leaf -->
+  <ellipse cx="225" cy="145" rx="18" ry="32" fill="#8BC34A" transform="rotate(35 225 145)"/>
 
-  <!-- Leaf 3 (smaller) -->
-  <ellipse cx="150" cy="110" rx="12" ry="20" fill="#8FD400" transform="rotate(0 150 110)"/>
+  <!-- Center leaf -->
+  <ellipse cx="200" cy="138" rx="15" ry="28" fill="#9CCC65"/>
 
-  <!-- County Text -->
-  <text x="150" y="250" font-family="Arial, sans-serif" font-size="42" font-weight="bold" fill="#0088B8" text-anchor="middle">COUNTY</text>
+  <!-- Small stem -->
+  <rect x="198" y="135" width="4" height="10" fill="#6D4C41" rx="1"/>
 
-  <!-- Florida Text with underline -->
-  <text x="150" y="280" font-family="Arial, sans-serif" font-size="24" fill="#0088B8" text-anchor="middle">FLORIDA</text>
-  <line x1="90" y1="285" x2="210" y2="285" stroke="#0088B8" stroke-width="3"/>
+  <!-- "COUNTY" Text -->
+  <text x="200" y="310" font-family="'Arial', 'Helvetica', sans-serif" font-size="58" font-weight="bold" fill="#0088B8" text-anchor="middle" letter-spacing="2">COUNTY</text>
+
+  <!-- "FLORIDA" Text -->
+  <text x="200" y="355" font-family="'Arial', 'Helvetica', sans-serif" font-size="28" fill="#0088B8" text-anchor="middle" letter-spacing="1">FLORIDA</text>
+
+  <!-- Underline under FLORIDA -->
+  <line x1="120" y1="365" x2="280" y2="365" stroke="#0088B8" stroke-width="4"/>
 </svg>
