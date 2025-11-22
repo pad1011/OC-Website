@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main
+      - claude/redesign-with-translation-chatbot-01YDueSuupYReuxM9K9SLwZb
   workflow_dispatch:
 
 permissions:
