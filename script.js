@@ -13,23 +13,25 @@ if (mobileMenuToggle) {
 
 // Close mobile menu when clicking outside
 document.addEventListener('click', (e) => {
-    if (!e.target.closest('.main-nav') && navMenu.classList.contains('active')) {
+    if (!e.target.closest('.main-nav') && navMenu && navMenu.classList.contains('active')) {
         navMenu.classList.remove('active');
-        const icon = mobileMenuToggle.querySelector('i');
-        icon.classList.add('fa-bars');
-        icon.classList.remove('fa-times');
+        if (mobileMenuToggle) {
+            const icon = mobileMenuToggle.querySelector('i');
+            icon.classList.add('fa-bars');
+            icon.classList.remove('fa-times');
+        }
     }
 });
 
-// Chatbot Functionality
-const chatbotToggle = document.getElementById('chatbot-toggle');
-const chatbotWindow = document.getElementById('chatbot-window');
-const chatbotClose = document.getElementById('chatbot-close');
-const chatbotInput = document.getElementById('chatbot-input');
-const chatbotSend = document.getElementById('chatbot-send');
-const chatbotMessages = document.getElementById('chatbot-messages');
+// Main Chatbot Functionality (Prominent Section)
+const chatbotInputMain = document.getElementById('chatbot-input-main');
+const chatbotSendMain = document.getElementById('chatbot-send-main');
+const chatbotMessagesMain = document.getElementById('chatbot-messages-main');
+const chatbotMinimize = document.getElementById('chatbot-minimize');
+const chatbotFloatBtn = document.getElementById('chatbot-float-btn');
+const chatbotSection = document.querySelector('.chatbot-section');
 
-// Chatbot knowledge base
+// Chatbot knowledge base with expanded content
 const chatbotKnowledge = {
     'property tax': {
         response: "You can pay your property tax online through our Tax Collector's office. Visit the Tax Collector section or call (407) 836-4500. You can also set up automatic payments for convenience.",
@@ -38,11 +40,18 @@ const chatbotKnowledge = {
             { text: 'Tax Payment Schedule', url: '#' }
         ]
     },
-    'permits': {
-        response: "Orange County offers various permits including building permits, zoning permits, and business licenses. You can apply online through our Permit Portal or visit the Planning & Development office.",
+    'permit': {
+        response: "Orange County offers various permits including building permits, zoning permits, and business licenses. You can apply online through our Permit Portal or visit the Planning & Development office at the Government Center.",
         links: [
             { text: 'Apply for Building Permit', url: '#' },
             { text: 'Business License Application', url: '#' }
+        ]
+    },
+    'building': {
+        response: "For building permits and inspections, contact our Building Services department. We handle residential, commercial, and industrial construction permits. Most permits can be applied for online.",
+        links: [
+            { text: 'Building Permits', url: '#' },
+            { text: 'Schedule Inspection', url: '#' }
         ]
     },
     'public records': {
@@ -52,86 +61,86 @@ const chatbotKnowledge = {
             { text: 'Records FAQ', url: '#' }
         ]
     },
-    'parks': {
-        response: "Orange County has over 30 parks with various amenities including playgrounds, sports facilities, and nature trails. Visit our Parks & Recreation page to find a park near you.",
+    'park': {
+        response: "Orange County has over 30 parks with various amenities including playgrounds, sports facilities, and nature trails. Visit our Parks & Recreation page to find a park near you and reserve facilities.",
         links: [
             { text: 'Find a Park', url: '#' },
             { text: 'Reserve Park Facilities', url: '#' }
         ]
     },
-    'waste': {
-        response: "Waste collection schedules vary by area. You can find your collection schedule online by entering your address. We also offer recycling services and hazardous waste disposal.",
+    'trash': {
+        response: "Waste collection schedules vary by area. You can find your collection schedule online by entering your address. We also offer recycling services and hazardous waste disposal at designated facilities.",
         links: [
             { text: 'Find Collection Schedule', url: '#' },
             { text: 'Recycling Guidelines', url: '#' }
         ]
     },
-    'library': {
-        response: "Orange County Library System has multiple branches throughout the county. You can check out books, access digital resources, and attend community programs. Library cards are free!",
+    'waste': {
+        response: "Our Solid Waste Management division provides collection services, recycling programs, and disposal facilities. For your collection schedule, enter your address on our website or call 311.",
         links: [
-            { text: 'Find a Library Branch', url: '#' },
-            { text: 'Get a Library Card', url: '#' }
+            { text: 'Collection Schedule', url: '#' },
+            { text: 'Recycling Centers', url: '#' }
         ]
     },
-    'hours': {
-        response: "Most Orange County offices are open Monday-Friday, 8:00 AM - 5:00 PM. Some offices have extended hours. Please check the specific department for their hours of operation.",
+    'recycling': {
+        response: "Orange County offers comprehensive recycling services. We accept paper, cardboard, plastics #1-7, glass, and metals. Place recyclables in your blue bin on collection day. No sorting needed!",
         links: [
-            { text: 'Department Directory', url: '#' }
+            { text: 'What Can Be Recycled', url: '#' },
+            { text: 'Find Drop-off Location', url: '#' }
+        ]
+    },
+    'contact': {
+        response: "Orange County Government Center is located at 201 S. Rosalind Avenue, Orlando, FL 32801. Main phone: (407) 836-7370. For specific departments, visit our contact directory.",
+        links: [
+            { text: 'Department Directory', url: '#' },
+            { text: 'Send Feedback', url: '#' }
+        ]
+    },
+    'official': {
+        response: "To contact county officials including the Mayor and Board of County Commissioners, visit our Government section. You can email, call, or attend public meetings held regularly at the Government Center.",
+        links: [
+            { text: 'Contact Officials', url: '#' },
+            { text: 'Meeting Schedule', url: '#' }
         ]
     },
     'employment': {
-        response: "Orange County is always looking for talented individuals to join our team. Current job openings are posted on our employment portal. We offer competitive salaries and excellent benefits.",
+        response: "Orange County is always looking for talented individuals to join our team. Current job openings are posted on our employment portal. We offer competitive salaries and excellent benefits including health insurance and retirement plans.",
         links: [
             { text: 'View Job Openings', url: '#' },
             { text: 'Employee Benefits', url: '#' }
         ]
     },
-    'emergency': {
-        response: "For emergencies, always call 911. For non-emergency assistance, contact Orange County Sheriff's Office at (407) 836-4357. Visit our Emergency Services page for preparedness resources.",
+    'job': {
+        response: "Search current job openings with Orange County government. We offer careers in various fields including administration, public safety, parks, engineering, and more. Apply online through our employment portal.",
         links: [
-            { text: 'Emergency Services', url: '#' },
-            { text: 'Hurricane Preparedness', url: '#' }
-        ]
-    },
-    'contact': {
-        response: "Orange County Government Center is located at 201 S. Rosalind Avenue, Orlando, FL 32801. Main phone: (407) 836-7370. You can also contact specific departments directly.",
-        links: [
-            { text: 'Department Directory', url: '#' },
-            { text: 'Send Feedback', url: '#' }
+            { text: 'Browse Jobs', url: '#' },
+            { text: 'Application Tips', url: '#' }
         ]
     }
 };
 
-// Toggle chatbot window
-chatbotToggle.addEventListener('click', () => {
-    chatbotWindow.classList.toggle('active');
-    if (chatbotWindow.classList.contains('active')) {
-        chatbotInput.focus();
-    }
-});
+// Send message function for main chatbot
+function sendMessageMain() {
+    if (!chatbotInputMain || !chatbotMessagesMain) return;
 
-chatbotClose.addEventListener('click', () => {
-    chatbotWindow.classList.remove('active');
-});
-
-// Send message function
-function sendMessage() {
-    const message = chatbotInput.value.trim();
+    const message = chatbotInputMain.value.trim();
     if (message === '') return;
 
     // Add user message
-    addMessage(message, 'user');
-    chatbotInput.value = '';
+    addMessageMain(message, 'user');
+    chatbotInputMain.value = '';
 
     // Simulate bot typing
     setTimeout(() => {
         const response = getBotResponse(message);
-        addMessage(response.text, 'bot', response.links);
+        addMessageMain(response.text, 'bot', response.links);
     }, 800);
 }
 
-// Add message to chat
-function addMessage(text, sender, links = null) {
+// Add message to main chat
+function addMessageMain(text, sender, links = null) {
+    if (!chatbotMessagesMain) return;
+
     const messageDiv = document.createElement('div');
     messageDiv.className = `message ${sender}-message`;
 
@@ -149,16 +158,32 @@ function addMessage(text, sender, links = null) {
     // Add links if provided
     if (links && links.length > 0) {
         const linksDiv = document.createElement('div');
-        linksDiv.className = 'quick-replies';
-        linksDiv.style.marginTop = '10px';
+        linksDiv.style.display = 'flex';
+        linksDiv.style.gap = '10px';
+        linksDiv.style.marginTop = '12px';
+        linksDiv.style.flexWrap = 'wrap';
 
         links.forEach(link => {
             const linkBtn = document.createElement('a');
             linkBtn.href = link.url;
-            linkBtn.className = 'quick-reply';
             linkBtn.textContent = link.text;
-            linkBtn.style.textDecoration = 'none';
-            linkBtn.style.display = 'inline-block';
+            linkBtn.style.cssText = `
+                padding: 8px 16px;
+                background-color: var(--primary-teal);
+                color: white;
+                border-radius: 6px;
+                text-decoration: none;
+                font-size: 0.9rem;
+                font-weight: 600;
+                display: inline-block;
+                transition: all 0.3s;
+            `;
+            linkBtn.addEventListener('mouseover', () => {
+                linkBtn.style.backgroundColor = 'var(--primary-orange)';
+            });
+            linkBtn.addEventListener('mouseout', () => {
+                linkBtn.style.backgroundColor = 'var(--primary-teal)';
+            });
             linksDiv.appendChild(linkBtn);
         });
 
@@ -167,10 +192,10 @@ function addMessage(text, sender, links = null) {
 
     messageDiv.appendChild(avatarDiv);
     messageDiv.appendChild(contentDiv);
-    chatbotMessages.appendChild(messageDiv);
+    chatbotMessagesMain.appendChild(messageDiv);
 
     // Scroll to bottom
-    chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+    chatbotMessagesMain.scrollTop = chatbotMessagesMain.scrollHeight;
 }
 
 // Get bot response based on user message
@@ -179,56 +204,133 @@ function getBotResponse(message) {
 
     // Check for keywords in knowledge base
     for (const [key, value] of Object.entries(chatbotKnowledge)) {
-        if (lowerMessage.includes(key) || lowerMessage.includes(key.replace(' ', ''))) {
+        if (lowerMessage.includes(key)) {
             return { text: value.response, links: value.links };
         }
     }
 
     // Check for greetings
-    if (lowerMessage.match(/\b(hi|hello|hey|good morning|good afternoon)\b/)) {
+    if (lowerMessage.match(/\b(hi|hello|hey|good morning|good afternoon|greetings)\b/)) {
         return {
-            text: "Hello! Welcome to Orange County's virtual assistant. I can help you with property taxes, permits, public records, parks, and more. How can I assist you today?",
+            text: "Hello! Welcome to Orange County's virtual assistant. I can help you with property taxes, permits, public records, parks, waste collection, employment, and much more. What would you like to know?",
             links: []
         };
     }
 
     // Check for thank you
-    if (lowerMessage.match(/\b(thanks|thank you|appreciate)\b/)) {
+    if (lowerMessage.match(/\b(thanks|thank you|appreciate|thx)\b/)) {
         return {
-            text: "You're welcome! Is there anything else I can help you with today?",
+            text: "You're very welcome! I'm here 24/7 if you need any other assistance. Have a great day!",
+            links: []
+        };
+    }
+
+    // Check for bye/goodbye
+    if (lowerMessage.match(/\b(bye|goodbye|see you|later)\b/)) {
+        return {
+            text: "Goodbye! Thank you for visiting Orange County's website. Come back anytime you need assistance!",
             links: []
         };
     }
 
     // Default response with suggestions
     return {
-        text: "I'm not sure about that specific question, but I can help you with:\n\n• Property Tax Payments\n• Permits and Licenses\n• Public Records Requests\n• Parks and Recreation\n• Waste Collection\n• Employment Opportunities\n\nWhat would you like to know more about?",
+        text: "I'm not sure about that specific question, but I can help you with many services including:\n\n• Property Tax Payments\n• Permits and Licenses\n• Public Records Requests\n• Parks and Recreation\n• Waste Collection Schedules\n• Employment Opportunities\n• Contacting Officials\n\nWhat would you like to know more about?",
         links: [
             { text: 'Contact Us', url: '#contact' },
-            { text: 'Search Website', url: '#' }
+            { text: 'All Services', url: '#services' }
         ]
     };
 }
 
-// Send button click
-chatbotSend.addEventListener('click', sendMessage);
+// Event listeners for main chatbot
+if (chatbotSendMain) {
+    chatbotSendMain.addEventListener('click', sendMessageMain);
+}
 
-// Enter key to send
-chatbotInput.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') {
-        sendMessage();
-    }
-});
+if (chatbotInputMain) {
+    chatbotInputMain.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            sendMessageMain();
+        }
+    });
+}
 
-// Quick reply buttons
+// Suggestion chips click handler
 document.addEventListener('click', (e) => {
-    if (e.target.classList.contains('quick-reply') && e.target.hasAttribute('data-query')) {
-        e.preventDefault();
+    if (e.target.classList.contains('suggestion-chip')) {
         const query = e.target.getAttribute('data-query');
-        chatbotInput.value = query;
-        sendMessage();
+        if (query && chatbotInputMain) {
+            // Remove suggestion chips
+            const suggestionsContainer = document.querySelector('.quick-suggestions');
+            if (suggestionsContainer) {
+                suggestionsContainer.style.display = 'none';
+            }
+
+            // Add user message
+            addMessageMain(query, 'user');
+
+            // Get and add bot response
+            setTimeout(() => {
+                const response = getBotResponse(query);
+                addMessageMain(response.text, 'bot', response.links);
+            }, 800);
+        }
     }
 });
+
+// Minimize chatbot (scroll to top of section)
+if (chatbotMinimize) {
+    chatbotMinimize.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+}
+
+// Show floating button when scrolled past chatbot section
+window.addEventListener('scroll', () => {
+    if (!chatbotSection || !chatbotFloatBtn) return;
+
+    const chatbotRect = chatbotSection.getBoundingClientRect();
+    const isScrolledPast = chatbotRect.bottom < 0;
+
+    if (isScrolledPast) {
+        chatbotFloatBtn.style.display = 'flex';
+    } else {
+        chatbotFloatBtn.style.display = 'none';
+    }
+
+    // Header shadow effect
+    const header = document.querySelector('.header');
+    const currentScroll = window.pageYOffset;
+    if (header) {
+        if (currentScroll > 100) {
+            header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.15)';
+        } else {
+            header.style.boxShadow = '0 2px 4px rgba(0, 0, 0, 0.08)';
+        }
+    }
+});
+
+// Float button click - scroll to chatbot section
+if (chatbotFloatBtn) {
+    chatbotFloatBtn.addEventListener('click', () => {
+        if (chatbotSection) {
+            chatbotSection.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+            // Focus on input after scroll
+            setTimeout(() => {
+                if (chatbotInputMain) {
+                    chatbotInputMain.focus();
+                }
+            }, 1000);
+        }
+    });
+}
 
 // Smooth scroll for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -243,57 +345,43 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                     block: 'start'
                 });
                 // Close mobile menu if open
-                if (navMenu.classList.contains('active')) {
+                if (navMenu && navMenu.classList.contains('active')) {
                     navMenu.classList.remove('active');
-                    const icon = mobileMenuToggle.querySelector('i');
-                    icon.classList.add('fa-bars');
-                    icon.classList.remove('fa-times');
+                    if (mobileMenuToggle) {
+                        const icon = mobileMenuToggle.querySelector('i');
+                        icon.classList.add('fa-bars');
+                        icon.classList.remove('fa-times');
+                    }
                 }
             }
         }
     });
 });
 
-// Add scroll effect to header
-let lastScroll = 0;
-const header = document.querySelector('.header');
-
-window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
-
-    if (currentScroll > 100) {
-        header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.15)';
-    } else {
-        header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
-    }
-
-    lastScroll = currentScroll;
-});
-
 // Newsletter form submission
-const newsletterForm = document.querySelector('.newsletter form');
-if (newsletterForm) {
-    newsletterForm.addEventListener('submit', (e) => {
+const newsletterForms = document.querySelectorAll('.newsletter-form');
+newsletterForms.forEach(form => {
+    form.addEventListener('submit', (e) => {
         e.preventDefault();
-        const email = newsletterForm.querySelector('input').value;
+        const email = form.querySelector('input[type="email"]').value;
         alert(`Thank you for subscribing! We'll send updates to ${email}`);
-        newsletterForm.reset();
-    });
-}
-
-// Department cards click effect
-document.querySelectorAll('.department-card').forEach(card => {
-    card.addEventListener('click', () => {
-        const department = card.querySelector('h3').textContent;
-        alert(`Navigating to ${department}...`);
+        form.reset();
     });
 });
 
-// Quick access cards analytics (could be connected to real analytics)
-document.querySelectorAll('.quick-access-card').forEach(card => {
+// Quick service items tracking
+document.querySelectorAll('.quick-service-item').forEach(item => {
+    item.addEventListener('click', () => {
+        const service = item.querySelector('span').textContent;
+        console.log(`User accessed quick service: ${service}`);
+    });
+});
+
+// Service cards tracking
+document.querySelectorAll('.service-card').forEach(card => {
     card.addEventListener('click', () => {
         const service = card.querySelector('h3').textContent;
-        console.log(`User clicked on: ${service}`);
+        console.log(`User viewed service: ${service}`);
     });
 });
 
@@ -308,17 +396,45 @@ const observer = new IntersectionObserver((entries) => {
         if (entry.isIntersecting) {
             entry.target.style.opacity = '1';
             entry.target.style.transform = 'translateY(0)';
+            observer.unobserve(entry.target);
         }
     });
 }, observerOptions);
 
 // Observe elements for animation
-document.querySelectorAll('.quick-access-card, .news-card, .department-card').forEach(el => {
+document.querySelectorAll('.service-card, .news-card, .department-card, .quick-service-item').forEach(el => {
     el.style.opacity = '0';
-    el.style.transform = 'translateY(30px)';
+    el.style.transform = 'translateY(20px)';
     el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
     observer.observe(el);
 });
 
-// Initialize chatbot with welcome message (already in HTML)
-console.log('Orange County Website initialized successfully!');
+// Search functionality (basic implementation)
+const searchInput = document.querySelector('.header-search input');
+const searchBtn = document.querySelector('.header-search .search-btn');
+
+if (searchBtn && searchInput) {
+    searchBtn.addEventListener('click', () => {
+        const query = searchInput.value.trim();
+        if (query) {
+            alert(`Searching for: "${query}"\n\nThis would redirect to search results page.`);
+            searchInput.value = '';
+        }
+    });
+
+    searchInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            const query = searchInput.value.trim();
+            if (query) {
+                alert(`Searching for: "${query}"\n\nThis would redirect to search results page.`);
+                searchInput.value = '';
+            }
+        }
+    });
+}
+
+// Console log for successful initialization
+console.log('🍊 Orange County Florida Website initialized successfully!');
+console.log('✅ All interactive features loaded');
+console.log('🤖 AI Chatbot ready to assist');
+console.log('🌐 Translation widget enabled');
