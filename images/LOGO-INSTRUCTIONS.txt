@@ -1,0 +1,32 @@
+ORANGE COUNTY LOGO SETUP
+========================
+
+To complete the website setup, please save the new Orange County logo as:
+  oc-logo.png
+
+Logo Specifications:
+- File format: PNG with transparent background
+- Recommended size: 300x300 pixels (minimum)
+- The logo will be used in:
+  * Header navigation (auto-scaled to 80px height)
+  * Footer (auto-scaled to 80px height)
+
+The logo you provided shows:
+- "ORANGE COUNTY" in blue text
+- "FLORIDA" in blue text with underline
+- Orange fruit graphic with green leaves in the center
+
+Current Status:
+- The website is ready to use
+- Logo placeholder path is set to: images/oc-logo.png
+- Simply save your logo file with this exact name in this directory
+
+Alternative:
+If you want to use a different filename or location, update these files:
+1. index.html (line 14 and footer logo)
+2. Update the img src path accordingly
+
+For best results:
+- Use a high-resolution PNG
+- Ensure transparent background
+- Test the logo appearance on both white and dark blue backgrounds
