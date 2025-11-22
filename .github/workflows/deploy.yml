@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - claude/county-rebrand-chatbot-01NyrZCR817skWte3ZyjfjfY
+      - claude/deploy-github-changes-018PihoKTnYMkF4AeuAjXpBZ
   workflow_dispatch:
 
 permissions:
