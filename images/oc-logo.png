@@ -1,0 +1,23 @@
+<svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="300" height="300" fill="white"/>
+
+  <!-- Orange County Text -->
+  <text x="150" y="80" font-family="Arial, sans-serif" font-size="42" font-weight="bold" fill="#0088B8" text-anchor="middle">ORANGE</text>
+
+  <!-- Orange Circle -->
+  <circle cx="150" cy="160" r="50" fill="#FF8C42"/>
+
+  <!-- Leaf 1 -->
+  <ellipse cx="135" cy="115" rx="15" ry="25" fill="#7FB800" transform="rotate(-30 135 115)"/>
+
+  <!-- Leaf 2 -->
+  <ellipse cx="165" cy="115" rx="15" ry="25" fill="#7FB800" transform="rotate(30 165 115)"/>
+
+  <!-- County Text -->
+  <text x="150" y="250" font-family="Arial, sans-serif" font-size="42" font-weight="bold" fill="#0088B8" text-anchor="middle">COUNTY</text>
+
+  <!-- Florida Text with underline -->
+  <text x="150" y="280" font-family="Arial, sans-serif" font-size="24" fill="#0088B8" text-anchor="middle">FLORIDA</text>
+  <line x1="90" y1="285" x2="210" y2="285" stroke="#0088B8" stroke-width="3"/>
+</svg>
