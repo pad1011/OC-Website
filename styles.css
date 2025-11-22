@@ -1,9 +1,11 @@
-/* Root Variables - Orange County Brand Colors */
+/* Root Variables - RAI Brand Colors */
 :root {
-    --primary-blue: #0088B8;
-    --dark-blue: #005A7A;
-    --light-blue: #E6F4F9;
-    --orange: #FF8C42;
+    --primary-blue: #7DD3FC;
+    --dark-blue: #2C3E50;
+    --light-blue: #E0F2FE;
+    --orange: #F59E0B;
+    --accent-orange: #FB923C;
+    --dark-navy: #1E3A5F;
     --dark-gray: #333333;
     --medium-gray: #666666;
     --light-gray: #F5F5F5;
@@ -110,7 +112,7 @@ body {
 }
 
 .search-btn {
-    background: var(--primary-blue);
+    background: var(--dark-navy);
     color: var(--white);
     border: none;
     padding: 10px 15px;
@@ -121,12 +123,13 @@ body {
 
 .search-btn:hover {
     background: var(--dark-blue);
+    transform: translateY(-2px);
 }
 
 /* Hero Section */
 .hero {
     position: relative;
-    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-blue) 100%);
+    background: linear-gradient(135deg, var(--dark-navy) 0%, var(--dark-blue) 100%);
     color: var(--white);
     padding: 120px 0;
     text-align: center;
@@ -225,7 +228,7 @@ body {
     border-radius: var(--border-radius);
     box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
     transition: var(--transition);
-    border-top: 4px solid var(--primary-blue);
+    border-top: 4px solid var(--dark-navy);
 }
 
 .quick-access-card:hover {
@@ -237,7 +240,7 @@ body {
 .icon-wrapper {
     width: 60px;
     height: 60px;
-    background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
+    background: linear-gradient(135deg, var(--primary-blue), var(--dark-navy));
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -432,7 +435,7 @@ body {
 
 .department-card i {
     font-size: 3rem;
-    color: var(--primary-blue);
+    color: var(--dark-navy);
     margin-bottom: 15px;
     transition: var(--transition);
 }
@@ -578,11 +581,11 @@ body {
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
+    background: linear-gradient(135deg, var(--dark-navy), var(--dark-blue));
     color: var(--white);
     border: none;
     cursor: pointer;
-    box-shadow: 0 4px 15px rgba(0, 136, 184, 0.4);
+    box-shadow: 0 4px 15px rgba(44, 62, 80, 0.4);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -639,7 +642,7 @@ body {
 }
 
 .chatbot-header {
-    background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
+    background: linear-gradient(135deg, var(--dark-navy), var(--dark-blue));
     color: var(--white);
     padding: 20px;
     display: flex;
@@ -722,7 +725,7 @@ body {
     width: 35px;
     height: 35px;
     border-radius: 50%;
-    background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
+    background: linear-gradient(135deg, var(--dark-navy), var(--dark-blue));
     display: flex;
     align-items: center;
     justify-content: center;
@@ -751,7 +754,7 @@ body {
 }
 
 .user-message .message-content p {
-    background: var(--primary-blue);
+    background: var(--dark-navy);
     color: var(--white);
     border-top-left-radius: 15px;
     border-top-right-radius: 5px;
@@ -767,8 +770,8 @@ body {
 .quick-reply {
     padding: 8px 15px;
     background: var(--white);
-    border: 2px solid var(--primary-blue);
-    color: var(--primary-blue);
+    border: 2px solid var(--dark-navy);
+    color: var(--dark-navy);
     border-radius: 20px;
     font-size: 0.85rem;
     cursor: pointer;
@@ -776,7 +779,7 @@ body {
 }
 
 .quick-reply:hover {
-    background: var(--primary-blue);
+    background: var(--dark-navy);
     color: var(--white);
 }
 
@@ -798,14 +801,14 @@ body {
 }
 
 #chatbot-input:focus {
-    border-color: var(--primary-blue);
+    border-color: var(--dark-navy);
 }
 
 #chatbot-send {
     width: 45px;
     height: 45px;
     border-radius: 50%;
-    background: var(--primary-blue);
+    background: var(--dark-navy);
     color: var(--white);
     border: none;
     cursor: pointer;

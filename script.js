@@ -137,7 +137,7 @@ function addMessage(text, sender, links = null) {
 
     const avatarDiv = document.createElement('div');
     avatarDiv.className = 'message-avatar';
-    avatarDiv.innerHTML = sender === 'bot' ? '<i class="fas fa-robot"></i>' : '<i class="fas fa-user"></i>';
+    avatarDiv.innerHTML = sender === 'bot' ? '<img src="images/rai-logo.svg" alt="RAI" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;">' : '<i class="fas fa-user"></i>';
 
     const contentDiv = document.createElement('div');
     contentDiv.className = 'message-content';
@@ -187,7 +187,7 @@ function getBotResponse(message) {
     // Check for greetings
     if (lowerMessage.match(/\b(hi|hello|hey|good morning|good afternoon)\b/)) {
         return {
-            text: "Hello! Welcome to Orange County's virtual assistant. I can help you with property taxes, permits, public records, parks, and more. How can I assist you today?",
+            text: "Hello! I'm RAI, your Orange County virtual assistant. I can help you with property taxes, permits, public records, parks, and more. How can I assist you today?",
             links: []
         };
     }
