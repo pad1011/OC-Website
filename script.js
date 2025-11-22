@@ -137,7 +137,15 @@ function addMessage(text, sender, links = null) {
 
     const avatarDiv = document.createElement('div');
     avatarDiv.className = 'message-avatar';
-    avatarDiv.innerHTML = sender === 'bot' ? '<i class="fas fa-robot"></i>' : '<i class="fas fa-user"></i>';
+    if (sender === 'bot') {
+        const raiImg = document.createElement('img');
+        raiImg.src = 'images/rai-logo.png';
+        raiImg.alt = 'Rai';
+        raiImg.className = 'rai-logo-avatar';
+        avatarDiv.appendChild(raiImg);
+    } else {
+        avatarDiv.innerHTML = '<i class="fas fa-user"></i>';
+    }
 
     const contentDiv = document.createElement('div');
     contentDiv.className = 'message-content';
@@ -187,7 +195,7 @@ function getBotResponse(message) {
     // Check for greetings
     if (lowerMessage.match(/\b(hi|hello|hey|good morning|good afternoon)\b/)) {
         return {
-            text: "Hello! Welcome to Orange County's virtual assistant. I can help you with property taxes, permits, public records, parks, and more. How can I assist you today?",
+            text: "Hello! I'm Rai, Orange County's digital assistant. I can help you with property taxes, permits, public records, parks, and much more. What do you need help with?",
             links: []
         };
     }
